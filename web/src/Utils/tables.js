@@ -10,7 +10,7 @@ const MOVES = [
   { name: 'Muscle-ups' },
   { name: 'Wall balls' },
   { name: 'Cleans' },
-  { name: 'Snatchs' },
+  { name: 'Snatches' },
   { name: 'Deadlifts' },
   { name: 'Push-ups' },
   { name: 'Overhead Squats' },
