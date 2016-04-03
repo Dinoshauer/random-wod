@@ -1,29 +1,57 @@
-export default {
-  names: {
-    a: '50 Jumping Jacks',
-    b: '20 Crunches',
-    c: '30 Squats',
-    d: '15 Push ups',
-    e: '1 min. Wall sit',
-    f: '10 Burpees',
-    g: '20 sec. Arm circles',
-    h: '20 Squats',
-    i: 'dufus',
-    j: '30 Jumping Jacks',
-    k: '15 Crunches',
-    l: '10 Push ups',
-    m: '2 min. Wall sit',
-    n: '40 Jumping Jacks',
-    o: '25 Burpees',
-    p: '15 sec. Arm circles',
-    q: '30 Crunches',
-    r: '15 Push ups',
-    s: '15 Squats',
-    t: '15 Squats',
-    u: '30 sec. Arm circles',
-    v: '3 min. Wall sit',
-    w: '20 Burpees',
-    y: '10 Crunches',
-    z: '20 Push ups'
-  }
+const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const MOVES = [
+  { name: 'Burpees' },
+  { name: 'Thrusters' },
+  { name: 'Pull-ups' },
+  { name: 'Jerks' },
+  { name: 'Toes-to-bars' },
+  { name: 'Double-unders' },
+  { name: 'Box jumps' },
+  { name: 'Muscle-ups' },
+  { name: 'Wall balls' },
+  { name: 'Cleans' },
+  { name: 'Snatchs' },
+  { name: 'Deadlifts' },
+  { name: 'Push-ups' },
+  { name: 'Overhead Squats' },
+  { name: 'Sit-ups' },
+  { name: 'Back squats' },
+  { name: 'Kettlebell swings' },
+  { name: 'Jumping jacks' },
+  { name: 'Lunges' },
+  { name: 'Chest-to-bars' },
+  { name: 'Bar Muscle-ups' },
+  { name: 'Air squats' },
+  { name: 'Ring dips' },
+  { name: 'Pistols' },
+  { name: 'Shoulder press' },
+  { name: 'Burpee boxjumps' },
+  { name: 'Front squats' }
+];
+
+const alphaScore = (position, char, occurences) => {
+  return Math.ceil((1.0 / (position * occurences)) * 100);
+};
+
+const countChars = (string) => {
+  return string.split('').reduce(function (prev, curr) {
+    if (!prev.hasOwnProperty(curr)) {
+      prev[curr] = 1;
+    } else {
+      prev[curr] += 1;
+    }
+    return prev;
+  }, {});
+};
+
+export const getMovement = (string) => {
+  const items = countChars(string);
+  return string.split('').map(char => {
+    const position = ALPHABET.indexOf(char.toLowerCase());
+    if (position === -1) return {};
+    return {
+      ...MOVES[position],
+      amount: alphaScore(position + 1, char, items[char])
+    };
+  });
 };

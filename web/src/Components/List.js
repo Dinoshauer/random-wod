@@ -7,7 +7,7 @@ const List = ({ items }) => (
     <ul className='list-group'>
       {items.map(
         (item, index) => (
-          <ListItem key={ index }>{ item }</ListItem>
+          <ListItem key={ index } item={ item } />
         )
       )}
     </ul>
@@ -15,7 +15,7 @@ const List = ({ items }) => (
 );
 
 List.propTypes = {
-  items: React.PropTypes.arrayOf(React.PropTypes.string)
+  items: React.PropTypes.arrayOf(React.PropTypes.object)
 };
 
 export default List;

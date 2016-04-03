@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -19,6 +17,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
         query: {
+          plugins: ['transform-object-rest-spread'],
           presets: ['es2015', 'react']
         }
       }

@@ -1,11 +1,15 @@
 import React from 'react';
 
-const ListItem = ({ children }) => (
-  <li className='list-group-item'>{ children }</li>
+const ListItem = ({ item }) => (
+  <li className='list-group-item'>
+    { item.amount }
+    {' '}
+    { item.name }
+  </li>
 );
 
 ListItem.propTypes = {
-  children: React.PropTypes.node
+  item: React.PropTypes.object
 };
 
 export default ListItem;

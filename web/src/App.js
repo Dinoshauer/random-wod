@@ -2,7 +2,7 @@ import React from 'react';
 
 import List from './Components/List';
 import Input from './Components/Input';
-import Tables from './Utils/tables';
+import { getMovement } from './Utils/tables';
 
 class App extends React.Component {
   constructor () {
@@ -13,9 +13,8 @@ class App extends React.Component {
   }
 
   update (e) {
-    const val = e.target.value;
     this.setState({
-      output: val.split('').map(c => Tables.names[c.charAt(c.length - 1)])
+      output: getMovement(e.target.value)
     });
   }
 
