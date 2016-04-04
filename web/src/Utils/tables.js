@@ -44,7 +44,7 @@ const countChars = (string) => {
   }, {});
 };
 
-export const getMovement = (string) => {
+export const getMovement = (string, opts) => {
   const items = countChars(string);
   return string.split('').map(char => {
     const position = ALPHABET.indexOf(char.toLowerCase());
