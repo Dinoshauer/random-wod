@@ -14,7 +14,7 @@ class App extends React.Component {
 
   update (e) {
     this.setState({
-      output: getMovement(e.target.value)
+      output: getMovement(e.target.value.toLowerCase())
     });
   }
 
